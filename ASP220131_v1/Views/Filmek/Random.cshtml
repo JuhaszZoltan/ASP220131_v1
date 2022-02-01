@@ -1,0 +1,27 @@
+﻿@model ASP220131_v1.Models.RandomFilmViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var classNev = Model.Kolcsonzok.Count >= 5 ? "nepszeru" : null;
+}
+
+<h2 class="@classNev">@Model.Film.Cim</h2>
+
+@if (Model.Kolcsonzok.Count == 0)
+{
+    <text>senki nem kölcsönözte ki a filmet</text>
+}
+else
+{
+    <h3>Kölcsönzők:</h3>
+    <ul>
+        @foreach (var k in Model.Kolcsonzok)
+        {
+            <li>@k.Nev</li>
+        }
+    </ul>
+}
+
